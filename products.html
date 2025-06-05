@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | BOBO250shop</title>
+    <link rel="icon" type="images/logo.ico" href="images/bobo LOGO.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <div class="mobile-nav">
+        <div class="mobile-logo"><img src="images/bobo LOGO.png" style="height: 50px; width: 50px;" alt="LOGO">BOBO250 Electronics Shop</div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html" class="active">Products</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="images/bobo LOGO.png" style="height: 50px; width: 50px;" alt="LOGO">
+                <span>BOBO250 Electronics Shop</span>
+                <div class="logo-highlight"></div>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html" class="active">Products</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Products Hero -->
+
+    <section class="products-hero">
+        
+        <h1>Our Premium Collection</h1>
+        <p>Discover the latest in technology with our carefully curated selection</p>
+    </section>
+
+    <!-- Products Filter -->
+    <section class="products-filter">
+        <div class="filter-container">
+            <div class="search-box">
+                <input type="text" placeholder="Search products...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            
+            <div class="filter-options">
+                <div class="filter-categories">
+                    <button class="filter-btn active" data-category="all">All</button>
+                    <button class="filter-btn" data-category="hot-combs">Hot Combs</button>
+                    <button class="filter-btn" data-category="irons">Irons</button>
+                    <button class="filter-btn" data-category="water-heaters">Water Heaters</button>
+                    <button class="filter-btn" data-category="smartwatches">Smart Watches</button>
+                    <button class="filter-btn" data-category="watches-bands">Watches Bands</button>
+                    <button class="filter-btn" data-category="car-chargers-bluetooth">Car Chargers & Bluetooth</button>
+                    <button class="filter-btn" data-category="ring-lights">Ring Lights</button>
+                    <button class="filter-btn" data-category="stands">Stands</button>
+                    <button class="filter-btn" data-category="tripods">Tripods</button>
+                    <button class="filter-btn" data-category="screen-protectors">Screen Protectors</button>
+                    <button class="filter-btn" data-category="phones">Phones</button>
+                    <button class="filter-btn" data-category="external-disks">External Hard Disks</button>
+                    <button class="filter-btn" data-category="portable-fans">Portable Fans</button>
+                    <button class="filter-btn" data-category="wireless-chargers">Wireless Chargers</button>
+                    <button class="filter-btn" data-category="blenders">Blenders</button>
+                    <button class="filter-btn" data-category="kettles">Kettles</button>
+                    <button class="filter-btn" data-category="speakers">Speakers</button>
+                    <button class="filter-btn" data-category="mini-speakers">Mini Speakers</button>
+                    <button class="filter-btn" data-category="wall-clocks">Wall Clocks</button>
+                    <button class="filter-btn" data-category="lamps">Rechargeable Lamps</button>
+                    <button class="filter-btn" data-category="bulbs">Bulbs</button>
+                    <button class="filter-btn" data-category="cables">Computer Cables</button>
+                    <button class="filter-btn" data-category="phone-cases">Phone Cases</button>
+                    <button class="filter-btn" data-category="headphones">Headphones</button>
+                    <button class="filter-btn" data-category="airpods">Airpods</button>
+                    <button class="filter-btn" data-category="earpieces">Earpieces</button>
+                    <button class="filter-btn" data-category="chargers">Chargers</button>
+                    <button class="filter-btn" data-category="camera-protectors">Camera Protectors</button>
+                    <button class="filter-btn" data-category="mouses">Mouses (Gaming)</button>
+                    <button class="filter-btn" data-category="keyboards">Keyboards</button>
+                    <button class="filter-btn" data-category="flash-disks">Flash Disks</button>
+                    <button class="filter-btn" data-category="batteries">Batteries</button>
+                    <button class="filter-btn" data-category="earrings">Earrings</button>
+                    <button class="filter-btn" data-category="necklaces">Necklaces</button>
+                </div>
+                
+                <div class="sort-options">
+                    <select id="sort-by">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="newest">Newest</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="products-grid-section">
+        <div class="products-grid" id="phones">
+            <h2 class="category-title">Phones</h2>
+            <div class="products-container">
+                <!-- Phone 1 -->
+                <div class="product-card" data-category="phones">
+                    <div class="product-image">
+                        <img src="images/iphone2.webp" alt="iPhone 15 Pro Max">
+                        <div class="product-badge">New</div>
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                    <div class="product-details">
+                        <h3>iPhone 15 Pro Max</h3>
+                        <div class="price">$1,099</div>
+                        <div class="product-actions">
+                            <button class="buy-now">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phone 1 -->
+                <div class="product-card" data-category="phones">
+                    <div class="product-image">
+                        <img src="images/iphone.webp" alt="iPhone 13">
+                        <div class="product-badge">New</div>
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                    <div class="product-details">
+                        <h3>iPhone 13</h3>
+                        <div class="price">$1,099</div>
+                        <div class="product-actions">
+                            <button class="buy-now">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phone 2 -->
+                <div class="product-card" data-category="phones">
+                    <div class="product-image">
+                        <img src="images/samsung s23.jpg" alt="Samsung Galaxy S23 Ultra">
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                    <div class="product-details">
+                        <h3>Samsung Galaxy S23 Ultra</h3>
+                        <div class="price">$999</div>
+                        <div class="product-actions">
+                            <button class="buy-now">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phone 3 -->
+                <div class="product-card" data-category="phones">
+                    <div class="product-image">
+                        <img src="images/google8pro.jpg" alt="Google Pixel 8 Pro">
+                        <div class="product-badge">-10%</div>
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                    <div class="product-details">
+                        <h3>Google Pixel 8 Pro</h3>
+                        <div class="price">$899 <span class="original-price">$999</span></div>
+                        <div class="product-actions">
+                            <button class="buy-now">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="products-grid" id="headphones">
+            <h2 class="category-title">Headphones & Audio</h2>
+            <div class="products-container">
+                <!-- Headphone 1 -->
+                <div class="product-card" data-category="headphones">
+                    <div class="product-image">
+                        <img src="images/AirPods Pro (2nd Gen).jpeg" alt="AirPods Pro">
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                    <div class="product-details">
+                        <h3>AirPods Pro (2nd Gen)</h3>
+                        <div class="price">$249</div>
+                        <div class="product-actions">
+                            <button class="buy-now">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Headphone 2 -->
+                <div class="product-card" data-category="headphones">
+                    <div class="product-image">
+                        <img src="images/Sony WH-1000XM5.webp" alt="Sony WH-1000XM5">
+                        <div class="product-badge">Best Seller</div>
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                    <div class="product-details">
+                        <h3>Sony WH-1000XM5</h3>
+                        <div class="price">$399</div>
+                        <div class="product-actions">
+                            <button class="buy-now">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Headphone 3 -->
+                <div class="product-card" data-category="headphones">
+                    <div class="product-image">
+                        <img src="images/JBL Live Pro 2.jpeg" alt="JBL Live Pro 2">
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                    <div class="product-details">
+                        <h3>JBL Live Pro 2</h3>
+                        <div class="price">$149</div>
+                        <div class="product-actions">
+                            <button class="buy-now">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="products-grid" id="smartwatches">
+            <h2 class="category-title">Smart Watches</h2>
+            <div class="products-container">
+                <!-- Watch 1 -->
+                <div class="product-card" data-category="smartwatches">
+                    <div class="product-image">
+                        <img src="images/apple-watch.jpg" alt="Apple Watch Series 9">
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                    <div class="product-details">
+                        <h3>Apple Watch Series 9</h3>
+                        <div class="price">$399</div>
+                        <div class="product-actions">
+                            <button class="buy-now">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Watch 2 -->
+                <div class="product-card" data-category="smartwatches">
+                    <div class="product-image">
+                        <img src="images/galaxy-watch.jpg" alt="Samsung Galaxy Watch 6">
+                        <div class="product-badge">New</div>
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                    <div class="product-details">
+                        <h3>Samsung Galaxy Watch 6</h3>
+                        <div class="price">$329</div>
+                        <div class="product-actions">
+                            <button class="buy-now">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Watch 3 -->
+                <div class="product-card" data-category="smartwatches">
+                    <div class="product-image">
+                        <img src="images/fitbit-sense.jpg" alt="Fitbit Sense 2">
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                    <div class="product-details">
+                        <h3>Fitbit Sense 2</h3>
+                        <div class="price">$299</div>
+                        <div class="product-actions">
+                            <button class="buy-now">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="products-grid" id="accessories">
+            <h2 class="category-title">Accessories</h2>
+            <div class="products-container">
+                <!-- Accessory 1 -->
+                <div class="product-card" data-category="accessories">
+                    <div class="product-image">
+                        <img src="images/wireless-charger.jpg" alt="Wireless Charger">
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                    <div class="product-details">
+                        <h3>Fast Wireless Charger</h3>
+                        <div class="price">$39</div>
+                        <div class="product-actions">
+                            <button class="buy-now">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Accessory 2 -->
+                <div class="product-card" data-category="accessories">
+                    <div class="product-image">
+                        <img src="images/phone-case.jpg" alt="Phone Case">
+                        <div class="product-badge">Bestseller</div>
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                    <div class="product-details">
+                        <h3>Premium Phone Case</h3>
+                        <div class="price">$29</div>
+                        <div class="product-actions">
+                            <button class="buy-now">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Accessory 3 -->
+                <div class="product-card" data-category="accessories">
+                    <div class="product-image">
+                        <img src="images/car-charger.jpg" alt="Car Charger">
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                    <div class="product-details">
+                        <h3>Fast Car Charger</h3>
+                        <div class="price">$19</div>
+                        <div class="product-actions">
+                            <button class="buy-now">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Accessory 4 -->
+                <div class="product-card" data-category="accessories">
+                    <div class="product-image">
+                        <img src="images/blender.jpg" alt="Blender">
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                    <div class="product-details">
+                        <h3>Premium Blender</h3>
+                        <div class="price">$59</div>
+                        <div class="product-actions">
+                            <button class="buy-now">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Accessory 5 -->
+                <div class="product-card" data-category="accessories">
+                    <div class="product-image">
+                        <img src="images/kettle.jpg" alt="Electric Kettle">
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                    <div class="product-details">
+                        <h3>Smart Electric Kettle</h3>
+                        <div class="price">$49</div>
+                        <div class="product-actions">
+                            <button class="buy-now">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Accessory 6 -->
+                <div class="product-card" data-category="accessories">
+                    <div class="product-image">
+                        <img src="images/iron.jpg" alt="Iron">
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                    <div class="product-details">
+                        <h3>Steam Iron</h3>
+                        <div class="price">$39</div>
+                        <div class="product-actions">
+                            <button class="buy-now">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                <div class="products-grid" id="hot-combs">
+            <h2 class="category-title">Hot Combs (Hair Dryers)</h2>
+            <div class="products-container">
+                <!-- Product cards will be added here -->
+            </div>
+        </div>
+
+        <div class="products-grid" id="irons">
+            <h2 class="category-title">Irons</h2>
+            <div class="products-container">
+                <!-- Product cards will be added here -->
+            </div>
+        </div>
+
+        <div class="products-grid" id="water-heaters">
+            <h2 class="category-title">Water Heaters</h2>
+            <div class="products-container">
+                <!-- Product cards will be added here -->
+            </div>
+        </div>
+
+        <div class="products-grid" id="watches-bands">
+            <h2 class="category-title">Watches Bands</h2>
+            <div class="products-container">
+                <!-- Product cards will be added here -->
+            </div>
+        </div>
+
+        <div class="products-grid" id="car-chargers-bluetooth">
+            <h2 class="category-title">Car Chargers & Bluetooth</h2>
+            <div class="products-container">
+                <!-- Product cards will be added here -->
+            </div>
+        </div>
+
+        <div class="products-grid" id="ring-lights">
+            <h2 class="category-title">Ring Lights</h2>
+            <div class="products-container">
+                <!-- Product cards will be added here -->
+            </div>
+        </div>
+
+        <div class="products-grid" id="stands">
+            <h2 class="category-title">Stands (Laptop, Phone)</h2>
+            <div class="products-container">
+                <!-- Product cards will be added here -->
+            </div>
+        </div>
+
+        <div class="products-grid" id="tripods">
+            <h2 class="category-title">Tripods</h2>
+            <div class="products-container">
+                <!-- Product cards will be added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="newsletter-container">
+            <div class="newsletter-content">
+                <h2>Stay Updated</h2>
+                <p>Get the latest tech news and exclusive offers</p>
+            </div>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address">
+                <button type="submit">Subscribe <i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-section" style="margin-left: 10px;">
+                <h3>BOBO250 Electronics shop</h3>
+                <p>Premium electronics for the modern lifestyle. Quality products with exceptional service.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Shop</h3>
+                <ul>
+                    <li><a href="products.html#phones">Phones</a></li>
+                    <li><a href="products.html#headphones">Headphones</a></li>
+                    <li><a href="products.html#smartwatches">Smart Watches</a></li>
+                    <li><a href="products.html#accessories">Accessories</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Help</h3>
+                <ul>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Musanze, Karisimbi</li>
+                    <li><i class="fas fa-phone"></i> +250 781 370 531</li>
+                    <li><i class="fas fa-envelope"></i> info@bobo250shop.rw</li>
+                </ul>
+            </div>
+        </div>
+        
+<div class="footer-bottom">
+    <div class="footer-grid">
+        <p class="copyright">&copy; 2025 BOBO250 Electronics shop. All rights reserved.</p>
+        <div class="developer">
+            <span class="developer-text">Developed by THE SEMICOLON Company</span>
+            <img src="images/SEMICOLON.png" class="developer-logo" alt="SEMICOLON">
+        </div>
+    </div>
+</div>
+    </footer>
+
+    <!-- Quick View Modal -->
+    <div class="modal" id="quickViewModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-product">
+                <div class="modal-product-image">
+                    <img src="" alt="" id="modalProductImage">
+                </div>
+                <div class="modal-product-details">
+                    <h2 id="modalProductName"></h2>
+                    <div class="price" id="modalProductPrice"></div>
+                    <div class="product-description">
+                        <p id="modalProductDescription"></p>
+                    </div>
+                    <button class="buy-now">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

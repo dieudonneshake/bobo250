@@ -1,0 +1,174 @@
+/* Loading Animation */
+@keyframes particle-float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    25% {
+        transform: translateY(-50px) translateX(-30px);
+    }
+    50% {
+        transform: translateY(0) translateX(30px);
+    }
+    75% {
+        transform: translateY(50px) translateX(-30px);
+    }
+}
+
+@keyframes text-flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow:
+            0 0 5px #0ff0fc,
+            0 0 10px #0ff0fc,
+            0 0 20px #0ff0fc;
+    }
+    20%, 24%, 55% {
+        text-shadow: none;
+    }
+}
+
+/* Cyber Text Effects */
+.ct-main {
+    position: relative;
+    z-index: 4;
+}
+
+.ct-glitch {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+}
+
+.layer-0 {
+    color: #f700ff;
+    z-index: 3;
+    animation: glitch-anim-1 2s infinite linear alternate;
+}
+
+.layer-1 {
+    color: #0ff0fc;
+    z-index: 2;
+    animation: glitch-anim-2 2s infinite linear alternate;
+}
+
+.layer-2 {
+    color: #00ff47;
+    z-index: 1;
+    animation: glitch-anim-3 2s infinite linear alternate;
+}
+
+.glitch-active .ct-glitch {
+    opacity: 0.7;
+}
+
+@keyframes glitch-anim-1 {
+    0% { transform: translate(0); }
+    20% { transform: translate(-3px, 3px); }
+    40% { transform: translate(-3px, -3px); }
+    60% { transform: translate(3px, 3px); }
+    80% { transform: translate(3px, -3px); }
+    100% { transform: translate(0); }
+}
+
+@keyframes glitch-anim-2 {
+    0% { transform: translate(0) skew(0); }
+    20% { transform: translate(-5px, 5px) skew(-5deg); }
+    40% { transform: translate(-5px, -5px) skew(5deg); }
+    60% { transform: translate(5px, 5px) skew(-5deg); }
+    80% { transform: translate(5px, -5px) skew(5deg); }
+    100% { transform: translate(0) skew(0); }
+}
+
+@keyframes glitch-anim-3 {
+    0% { transform: translate(0) scale(1); }
+    20% { transform: translate(5px, -5px) scale(1.1); }
+    40% { transform: translate(-5px, 5px) scale(0.9); }
+    60% { transform: translate(5px, 5px) scale(1.1); }
+    80% { transform: translate(-5px, -5px) scale(0.9); }
+    100% { transform: translate(0) scale(1); }
+}
+
+/* Hologram animations */
+.logo-beam {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 5px;
+    background: linear-gradient(to right, transparent, #0ff0fc, transparent);
+    filter: blur(1px);
+    animation: beam-pulse 2s infinite;
+}
+
+@keyframes beam-pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+}
+
+/* Button animations */
+.cyber-btn:hover .cb-glitch {
+    animation: text-flicker 0.3s infinite alternate;
+}
+
+/* Cart animations */
+.cyber-cart.pulse {
+    animation: cart-pulse 0.5s;
+}
+
+@keyframes cart-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.cart-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #0ff0fc;
+    padding: 15px;
+    border-radius: 5px;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.cart-notification.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Floating animation */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Spin animation */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.spin {
+    animation: spin 2s linear infinite;
+}

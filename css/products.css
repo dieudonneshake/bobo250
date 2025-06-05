@@ -1,0 +1,167 @@
+/* Product Controls (Filters & Sorting) */
+.product-controls {
+    background: var(--accent);
+    padding: 20px 0;
+    margin-top: 80px;
+}
+
+.product-controls .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filters, .sorting {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.filters h3, .sorting h3 {
+    font-size: 1rem;
+    color: var(--secondary);
+}
+
+select {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background: var(--light-gray);
+    color: var(--primary);
+    cursor: pointer;
+}
+
+/* Product Listing */
+.product-listing {
+    padding: 60px 0;
+}
+
+.product-listing h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    background: var(--accent);
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.product-img {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.product-img img {
+    width: 100%;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-img img {
+    transform: scale(1.05);
+}
+
+.quick-view {
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 215, 0, 0.9);
+    color: var(--primary);
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    transition: bottom 0.3s ease;
+}
+
+.product-card:hover .quick-view {
+    bottom: 0;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: var(--accent);
+    padding: 30px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 800px;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--secondary);
+}
+
+.modal-product {
+    display: flex;
+    gap: 30px;
+}
+
+.modal-img {
+    flex: 1;
+}
+
+.modal-img img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.modal-details {
+    flex: 1;
+}
+
+.modal-details .price {
+    font-size: 1.5rem;
+    margin: 15px 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .product-controls .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .modal-product {
+        flex-direction: column;
+    }
+}
+/* Add this to products.css */
+.product-controls {
+    margin-top: 80px; /* Matches header height */
+    background: var(--accent);
+    padding: 20px 0;
+}
