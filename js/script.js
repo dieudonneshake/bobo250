@@ -3,40 +3,38 @@ document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const mobileMenu = document.querySelector('.mobile-menu');
     
-    hamburger.addEventListener('click', function(e) {
-        e.stopPropagation();
-        this.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-        
-        if (this.classList.contains('active')) {
-            document.body.classList.add('menu-open');
-        } else {
-            document.body.classList.remove('menu-open');
-        }
-    });
-    
-    // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.mobile-menu') && !e.target.closest('.hamburger')) {
-            hamburger.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            document.body.classList.remove('menu-open');
-        }
-    });
-    
-    // Close menu when clicking on links
-    document.querySelectorAll('.mobile-menu a').forEach(link => {
-        link.addEventListener('click', function() {
-            hamburger.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            document.body.classList.remove('menu-open');
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            this.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            
+            if (this.classList.contains('active')) {
+                document.body.classList.add('menu-open');
+            } else {
+                document.body.classList.remove('menu-open');
+            }
         });
-    });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.mobile-menu') && !e.target.closest('.hamburger')) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            }
+        });
+        
+        // Close menu when clicking on links
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            });
+        });
+    }
 
-    // Rest of your existing JavaScript...
-    // (Keep all the product filtering, sorting, search functionality, etc.)
-});
-    
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -53,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 
                 // Close mobile menu if open
-                if (mobileMenu.classList.contains('active')) {
+                if (mobileMenu && mobileMenu.classList.contains('active')) {
                     hamburger.classList.remove('active');
                     mobileMenu.classList.remove('active');
                     document.body.style.overflow = '';
@@ -61,33 +59,54 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
     
-    // Product filtering
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const productCards = document.querySelectorAll('.product-card');
-    
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Remove active class from all buttons
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            
-            // Add active class to clicked button
-            this.classList.add('active');
-            
-            const filterValue = this.getAttribute('data-category');
-            
-            // Filter products
-            productCards.forEach(card => {
-                if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-                    card.style.display = 'block';
-                    card.style.animation = 'fadeIn 0.5s ease forwards';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+  // Replace the existing product filtering code with this:
+ const filterButtons = document.querySelectorAll('.filter-btn');
+ const productCards = document.querySelectorAll('.product-card');
+ const categoryTitles = document.querySelectorAll('.category-title');
+
+ filterButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        const filterValue = this.getAttribute('data-category');
+        
+        // Hide all category titles initially
+        categoryTitles.forEach(title => {
+            title.style.display = 'none';
+        });
+        
+        // Filter products and show relevant category title
+        productCards.forEach(card => {
+            if (filterValue === 'all') {
+                // Show all products and all category titles
+                card.style.display = 'block';
+                card.style.animation = 'fadeIn 0.5s ease forwards';
+                categoryTitles.forEach(title => {
+                    title.style.display = 'block';
+                });
+            } else if (card.getAttribute('data-category') === filterValue) {
+                // Show matching products and their category title
+                card.style.display = 'block';
+                card.style.animation = 'fadeIn 0.5s ease forwards';
+                
+                // Show the matching category title
+                const categoryId = card.closest('.products-grid').id;
+                document.querySelector(`#${categoryId} .category-title`).style.display = 'block';
+            } else {
+                // Hide non-matching products
+                card.style.display = 'none';
+            }
         });
     });
-    
+ });
+
+
     // Product sorting
     const sortSelect = document.getElementById('sort-by');
     if (sortSelect) {
@@ -107,29 +126,28 @@ document.addEventListener('DOMContentLoaded', function() {
                         return priceB - priceA;
                     case 'newest':
                     default:
-                        return 0; // In a real app, you would sort by date
+                        return 0;
                 }
             });
             
-            // Re-append sorted products with animation
             products.forEach((product, index) => {
                 product.style.animation = `fadeInUp 0.5s ease forwards ${index * 0.05}s`;
                 productsContainer.appendChild(product);
             });
         });
     }
-    
+
     // Search functionality
     const searchInputs = document.querySelectorAll('.search-box input');
     const searchButtons = document.querySelectorAll('.search-box button');
-    
+
     searchButtons.forEach((button, index) => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
             performSearch(searchInputs[index].value);
         });
     });
-    
+
     searchInputs.forEach(input => {
         input.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
@@ -138,13 +156,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+
     function performSearch(query) {
         if (!query.trim()) {
-            // Show all products if search is empty
-            document.querySelectorAll('.product-card').forEach(card => {
+            // Show all products and category titles if search is empty
+            productCards.forEach(card => {
                 card.style.display = 'block';
                 card.style.animation = 'fadeIn 0.5s ease forwards';
+            });
+            categoryTitles.forEach(title => {
+                title.style.display = 'block';
             });
             return;
         }
@@ -152,11 +173,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const searchTerm = query.toLowerCase();
         let hasResults = false;
         
-        document.querySelectorAll('.product-card').forEach(card => {
+        // Hide all category titles during search
+        categoryTitles.forEach(title => {
+            title.style.display = 'none';
+        });
+        
+        productCards.forEach(card => {
             const productName = card.querySelector('h3').textContent.toLowerCase();
             const productCategory = card.getAttribute('data-category').toLowerCase();
             
-            if (productName.includes(searchTerm)) {
+            if (productName.includes(searchTerm) || productCategory.includes(searchTerm)) {
                 card.style.display = 'block';
                 card.style.animation = 'fadeIn 0.5s ease forwards';
                 hasResults = true;
@@ -166,7 +192,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         if (!hasResults) {
-            // Show no results message
             alert('No products found matching your search.');
         }
     }
@@ -175,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const quickViewButtons = document.querySelectorAll('.quick-view');
     const quickViewModal = document.getElementById('quickViewModal');
     const closeModal = document.querySelector('.close-modal');
-    
+
     if (quickViewButtons.length && quickViewModal) {
         quickViewButtons.forEach(button => {
             button.addEventListener('click', function() {
@@ -189,7 +214,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('modalProductPrice').textContent = productPrice;
                 document.getElementById('modalProductImage').src = productImage;
                 
-                // In a real app, you would fetch product description from a data attribute or API
+                // Product description
                 document.getElementById('modalProductDescription').textContent = 
                     `This is a premium ${productName} with all the latest features and technology.`;
                 
@@ -224,6 +249,87 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // WhatsApp Message Functionality
+    function sendWhatsAppMessage(productName, productPrice) {
+        const phoneNumber = '+250781370531';
+        const message = `Hello BOBO250 Electronics Shop,\n\nI would like to purchase:\nProduct: ${productName}\nPrice: ${productPrice}\n\nPlease provide more details about availability, delivery and payment options.`;
+        const encodedMessage = encodeURIComponent(message);
+        window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+    }
+
+    // Handle Buy Now Button Click - Enhanced for all product types
+    function handleBuyNowClick(e) {
+        e.preventDefault();
+        const button = e.currentTarget;
+        const productCard = button.closest('.product-card');
+        
+        if (productCard) {
+            let productName, productPrice;
+            
+            // Handle simple product cards (like phone cases)
+            if (productCard.classList.contains('simple-case')) {
+                productName = productCard.querySelector('img').alt || 'Product';
+                // Try to find price in various locations
+                productPrice = productCard.querySelector('.price')?.textContent || 
+                              productCard.dataset.price || 
+                              '$0';
+            } 
+            // Handle regular product cards
+            else {
+                productName = productCard.querySelector('h3').textContent;
+                productPrice = productCard.querySelector('.price').textContent;
+            }
+            
+            sendWhatsAppMessage(productName, productPrice);
+            
+            // Animation feedback
+            button.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                button.style.transform = 'scale(1)';
+            }, 200);
+        }
+    }
+
+    // Initialize all Buy Now buttons (both regular and simple)
+    function initializeBuyNowButtons() {
+        // Handle both button types
+        document.querySelectorAll('.buy-now, .buy-now-simple').forEach(button => {
+            // Skip modal button (handled separately)
+            if (!button.closest('#quickViewModal')) {
+                button.addEventListener('click', handleBuyNowClick);
+            }
+        });
+        
+        // Modal buy now button (separate handler)
+        const modalBuyNow = document.querySelector('#quickViewModal .buy-now');
+        if (modalBuyNow) {
+            modalBuyNow.addEventListener('click', function(e) {
+                e.preventDefault();
+                const productName = document.getElementById('modalProductName').textContent;
+                const productPrice = document.getElementById('modalProductPrice').textContent;
+                
+                sendWhatsAppMessage(productName, productPrice);
+                
+                // Animation feedback
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+            });
+        }
+    }
+
+    // Initialize buy now buttons on page load
+    initializeBuyNowButtons();
+
+    // Event delegation as fallback for dynamically added buttons
+    document.addEventListener('click', function(e) {
+        const buyNowButton = e.target.closest('.buy-now, .buy-now-simple');
+        if (buyNowButton && !buyNowButton.closest('#quickViewModal') && !e.defaultPrevented) {
+            handleBuyNowClick(e);
+        }
+    });
+
     // Add animations to elements when they come into view
     const animateOnScroll = function() {
         const elements = document.querySelectorAll('.slide-up, .fade-in');
@@ -244,21 +350,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Check on scroll
     window.addEventListener('scroll', animateOnScroll);
-    
-    // Buy Now buttons
-    const buyNowButtons = document.querySelectorAll('.buy-now');
-    buyNowButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const productName = this.closest('.product-details').querySelector('h3').textContent;
-            alert(`Added ${productName} to your order!`);
-            
-            // Animation feedback
-            this.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                this.style.transform = 'scale(1)';
-            }, 200);
-        });
-    });
     
     // Newsletter form submission
     const newsletterForms = document.querySelectorAll('.newsletter-form');
@@ -283,4 +374,5 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 2000);
             }
         });
+    });
 });
